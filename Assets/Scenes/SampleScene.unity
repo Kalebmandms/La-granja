@@ -376,6 +376,8 @@ MonoBehaviour:
   areaMovimiento: {fileID: 856893786}
   velocidad: 1
   destino: {x: 0, y: 0}
+  sr: {fileID: 0}
+  posicionInicial: {x: 0, y: 0}
 --- !u!95 &855525379
 Animator:
   serializedVersion: 7
@@ -1174,6 +1176,8 @@ MonoBehaviour:
   areaMovimiento: {fileID: 1530912706}
   velocidad: 1
   destino: {x: 0, y: 0}
+  sr: {fileID: 0}
+  posicionInicial: {x: 0, y: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
