@@ -6,36 +6,33 @@ public class MovimientoJugador : MonoBehaviour
     public float velocidad = 5f;
     Rigidbody2D rb;
     public Vector2 entrada;
-	private Animator animator;
+    private Animator animator;
+    public GameObject trigoPreFab;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-	animator = GetComponent<Animator>();
+        animator = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        rb.linearVelocity = entrada * velocidad;
+        rb.linearVelocity = entrada * velocidad; // Corrección aquí
     }
 
-    public void Moverse(InputAction.CallbackContext contexto){
-        
+    public void Moverse(InputAction.CallbackContext contexto)
+    {
         Vector2 valorEntrada = contexto.ReadValue<Vector2>();
 
-	animator.SetBool("estaCaminando", true);
+        animator.SetBool("estaCaminando", valorEntrada != Vector2.zero);
 
         // Determinar el eje dominante
         if (Mathf.Abs(valorEntrada.x) > Mathf.Abs(valorEntrada.y))
         {
-            // Movimiento horizontal
             entrada = new Vector2(Mathf.Sign(valorEntrada.x), 0);
         }
         else if (Mathf.Abs(valorEntrada.y) > 0)
         {
-            // Movimiento vertical
             entrada = new Vector2(0, Mathf.Sign(valorEntrada.y));
         }
         else
@@ -43,12 +40,15 @@ public class MovimientoJugador : MonoBehaviour
             entrada = Vector2.zero;
         }
 
-	//asignar valores a los parametros entradaX y entradaY
-	animator.SetFloat("entradaX", entrada.x);
-	animator.SetFloat("entradaY", entrada.y);
+        animator.SetFloat("entradaX", entrada.x);
+        animator.SetFloat("entradaY", entrada.y);
+    }
 
-	if(contexto.canceled){
-		animator.SetBool("estaCaminando", false);
-	}
+    public void SembrarTrigo(InputAction.CallbackContext contexto)
+    {
+        if (contexto.performed)
+        {
+            Instantiate(trigoPreFab, transform.position, Quaternion.identity); // Corrección aquí
+        }
     }
 }
