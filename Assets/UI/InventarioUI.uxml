@@ -1,0 +1,4 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/Inventario%20Style.uss?fileID=7433441132597879392&amp;guid=24cff783397036046a71ee3255202590&amp;type=3#Inventario Style" />
+    <ui:Label text="Huevos: 0" />
+</ui:UXML>
